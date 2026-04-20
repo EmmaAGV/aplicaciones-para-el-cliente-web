@@ -1,0 +1,52 @@
+/* style.css */
+
+body{
+    background-color: #eaeaea;
+    font-family: Arial;
+}
+
+.contenedor{
+    width: 800px;
+    background: white;
+    margin: auto;
+    padding: 20px;
+}
+
+.encabezado{
+    text-align: center;
+}
+
+.encabezado img{
+    width: 130px;
+    height: 130px;
+    border-radius: 100px;
+}
+
+h1{
+    color: navy;
+}
+
+h2{
+    background: navy;
+    color: white;
+    padding: 5px;
+}
+
+.seccion{
+    margin-top: 20px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+th{
+    background: lightgray;
+}
