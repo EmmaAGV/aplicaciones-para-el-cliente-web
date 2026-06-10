@@ -1,84 +1,81 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Hoja de Vida</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Estudiantes</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="contenedor">
+<div class="container">
 
-    <div class="encabezado">
-        <img src="foto.jpg" alt="Mi Foto">
+    <h1>Registro de Estudiantes</h1>
 
-        <h1>Augusto Gómez</h1>
+    <form id="formEstudiante">
 
-        <p>Edad: 20 años</p>
-        <p>Teléfono: 0999999999</p>
-        <p>Correo: augusto@email.com</p>
-        <p>Dirección: Tarqui, Ecuador</p>
-    </div>
+        <input type="text" id="cedula" placeholder="Cédula" required>
+        <input type="text" id="apellidos" placeholder="Apellidos" required>
+        <input type="text" id="nombres" placeholder="Nombres" required>
+        <input type="text" id="direccion" placeholder="Dirección" required>
+        <input type="text" id="telefono" placeholder="Teléfono" required>
+        <input type="email" id="correo" placeholder="Correo" required>
 
-    <div class="seccion">
-        <h2>Estudios Realizados</h2>
+        <select id="facultad" required>
+            <option value="">Facultad</option>
+            <option>Ingeniería</option>
+            <option>Medicina</option>
+            <option>Derecho</option>
+            <option>Educación</option>
+        </select>
 
-        <p>Escuela Básica Ejemplo</p>
-        <p>Colegio Ejemplo</p>
-        <p>Universidad en curso</p>
-    </div>
+        <select id="nivel" required>
+            <option value="">Nivel</option>
+            <option>1</option><option>2</option>
+            <option>3</option><option>4</option>
+            <option>5</option><option>6</option>
+            <option>7</option><option>8</option>
+        </select>
 
-    <div class="seccion">
-        <h2>Experiencia Laboral</h2>
+        <select id="paralelo" required>
+            <option value="">Paralelo</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
 
-        <p>Atención al cliente</p>
-        <p>Ayudante administrativo</p>
-    </div>
+        <button type="submit">Guardar Estudiante</button>
 
-    <div class="seccion">
-        <h2>Capacitaciones</h2>
+    </form>
 
-        <p>Curso básico de HTML</p>
-        <p>Curso de Word y Excel</p>
-        <p>Curso de redes básicas</p>
-    </div>
+    <h2>Listado de Estudiantes</h2>
 
-    <div class="seccion">
-        <h2>Referencias Personales</h2>
+    <div class="table-wrapper">
 
         <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Cargo</th>
-                <th>Teléfono</th>
-                <th>Correo</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Cédula</th>
+                    <th>Apellidos</th>
+                    <th>Nombres</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Facultad</th>
+                    <th>Nivel</th>
+                    <th>Paralelo</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
 
-            <tr>
-                <td>Juan Pérez</td>
-                <td>Ingeniero</td>
-                <td>0988888888</td>
-                <td>juan@email.com</td>
-            </tr>
-
-            <tr>
-                <td>María López</td>
-                <td>Doctora</td>
-                <td>0977777777</td>
-                <td>maria@email.com</td>
-            </tr>
-
-            <tr>
-                <td>Carlos Vera</td>
-                <td>Contador</td>
-                <td>0966666666</td>
-                <td>carlos@email.com</td>
-            </tr>
+            <tbody id="tablaEstudiantes"></tbody>
         </table>
+
     </div>
 
 </div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
