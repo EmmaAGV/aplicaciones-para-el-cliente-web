@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro de Estudiantes</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Calculadora Iterativa con Bucles</title>
+    <!-- Los estilos CSS se encargan de dar una presentación pulida y responsive en pantalla -->
 </head>
-
 <body>
 
-<div class="container">
+    <h2>Operaciones en Bucle (5 Iteraciones)</h2>
+    
+    <!-- Campos de entrada validados para admitir cualquier valor de tipo numérico -->
+    <input type="number" id="num1" placeholder="Primer Número">
+    <input type="number" id="num2" placeholder="Segundo Número">
+    <button onclick="ejecutarBucle()">Procesar Bucle</button>
+    
+    <!-- Contenedor dinámico donde se inyectarán los resultados desde JavaScript -->
+    <div id="output"></div>
 
-    <h1>Registro de Estudiantes</h1>
-
-    <form id="formEstudiante">
-
-        <input type="text" id="cedula" placeholder="Cédula" required>
-        <input type="text" id="apellidos" placeholder="Apellidos" required>
-        <input type="text" id="nombres" placeholder="Nombres" required>
-        <input type="text" id="direccion" placeholder="Dirección" required>
-        <input type="text" id="telefono" placeholder="Teléfono" required>
-        <input type="email" id="correo" placeholder="Correo" required>
-
-        <select id="facultad" required>
-            <option value="">Facultad</option>
-            <option>Ingeniería</option>
-            <option>Medicina</option>
-            <option>Derecho</option>
-            <option>Educación</option>
-        </select>
-
-        <select id="nivel" required>
-            <option value="">Nivel</option>
-            <option>1</option><option>2</option>
-            <option>3</option><option>4</option>
-            <option>5</option><option>6</option>
-            <option>7</option><option>8</option>
-        </select>
-
-        <select id="paralelo" required>
-            <option value="">Paralelo</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-        </select>
-
-        <button type="submit">Guardar Estudiante</button>
-
-    </form>
-
-    <h2>Listado de Estudiantes</h2>
-
-    <div class="table-wrapper">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Cédula</th>
-                    <th>Apellidos</th>
-                    <th>Nombres</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Facultad</th>
-                    <th>Nivel</th>
-                    <th>Paralelo</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-
-            <tbody id="tablaEstudiantes"></tbody>
-        </table>
-
-    </div>
-
-</div>
-
-<script src="script.js"></script>
+<script>
+    function ejecutarBucle() {
+        // 1. Captura de los valores ingresados y conversión a tipo flotante (decimal)
+        const n1 = parseFloat(document.getElementById('num1').value);
+        const n2 = parseFloat(document.getElementById('num2').value);
+        
+        // Control de excepciones: Validación para asegurar que no se procesen campos vacíos
+        if (isNaN(n1) || isNaN(n2)) {
+            alert("Por favor, ingrese ambos números de manera correcta.");
+            return;
+        }
+        
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = ""; // Se limpia el contenedor antes de iniciar un nuevo procesamiento
+        
+        // 2. Bucle controlado: Realiza exactamente 5 iteraciones consecutivas (del 1 al 5)
+        for (let i = 1; i <= 5; i++) {
+            let resultado = 0;
+            let operacion = "";
+            let signo = "";
+            
+            // 3. Estructura Selectiva Múltiple (switch): Cambia la lógica aritmética según el número de ciclo
+            switch(i) {
+                case 1:
+                    operacion = "SUMA";
+                    signo = "+";
+                    resultado = n1 + n2; // Primera iteración
+                    break;
+                case 2:
+                    operacion = "RESTA";
+                    signo = "-";
+                    resultado = n1 - n2; // Segunda iteración
+                    break;
+                case 3:
+                    operacion = "MULTIPLICA";
+                    signo = "*";
+                    resultado = n1 * n2; // Tercera iteración
+                    break;
+                case 4:
+                    operacion = "DIVIDE";
+                    signo = "/";
+                    // Validación de seguridad frontend para evitar indeterminaciones matemáticas
+                    resultado = (n2 === 0) ? "Indefinido (División por cero)" : n1 / n2; 
+                    break;
+                case 5:
+                    operacion = "MÓDULO (%)";
+                    signo = "%";
+                    // Validación de seguridad frontend para el residuo por cero
+                    resultado = (n2 === 0) ? "Indefinido (Módulo por cero)" : n1 % n2; 
+                    break;
+            }
+            
+            // 4. Inyección dinámica en el DOM: Se añade el texto y el resultado formateado al contenedor HTML
+            outputDiv.innerHTML += `
+                <div style="margin: 10px 0; font-size: 16px;">
+                    <strong>Iteración ${i}</strong>: Se <span>${operacion}</span> los valores (${n1} ${signo} ${n2}). 
+                    Resultado = <span>${resultado}</span>
+                </div>
+            `;
+        }
+    }
+</script>
 
 </body>
 </html>
